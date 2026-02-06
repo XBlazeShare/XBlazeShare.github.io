@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Gaming Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- INTRO CUTSCENE -->
+    <div id="intro-screen" class="intro-screen active">
+        <div class="intro-content">
+            <div class="terminal-text">
+                <div class="line" style="animation-delay: 0s;">> INITIALIZING SYSTEM...</div>
+                <div class="line" style="animation-delay: 1s;">> LOADING PROTOCOLS...</div>
+                <div class="line" style="animation-delay: 2s;">> WELCOME, PLAYER</div>
+                <div class="line glow-text" style="animation-delay: 3s;">> ACCESS GRANTED</div>
+            </div>
+            <div class="progress-bar-container" style="animation-delay: 3.5s;">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PASSWORD SCREEN -->
+    <div id="password-screen" class="password-screen">
+        <div class="password-container">
+            <div class="lock-icon">🔒</div>
+            <h1 class="password-title">RESTRICTED ACCESS</h1>
+            <p class="password-subtitle">Enter password to continue</p>
+            <div class="password-input-group">
+                <input type="password" id="password-input" class="password-input" placeholder="Enter password">
+                <button id="password-submit" class="password-btn">ENTER</button>
+            </div>
+            <div id="password-error" class="password-error"></div>
+        </div>
+    </div>
+
+    <!-- MAIN SITE -->
+    <div id="main-site" class="main-site">
+        <!-- Navigation Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">⚡ CYBER PORTAL</div>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item active" data-section="home">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">Home</span>
+                </li>
+                <li class="nav-item" data-section="games">
+                    <span class="nav-icon">🎮</span>
+                    <span class="nav-text">Games</span>
+                </li>
+                <li class="nav-item" data-section="enigma">
+                    <span class="nav-icon">🔮</span>
+                    <span class="nav-text">Enigma Games</span>
+                </li>
+                <li class="nav-item" data-section="science">
+                    <span class="nav-icon">🧪</span>
+                    <span class="nav-text">Science</span>
+                </li>
+                <li class="nav-item" data-section="tools">
+                    <span class="nav-icon">🛠️</span>
+                    <span class="nav-text">Tools</span>
+                </li>
+                <li class="nav-item" data-section="settings">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">Settings</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- HOME SECTION -->
+            <section id="home-section" class="content-section active">
+                <div class="section-header">
+                    <h1 class="section-title">Welcome to Cyber Portal</h1>
+                    <p class="section-subtitle">Your gateway to unrestricted gaming and learning</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🎮</div>
+                        <div class="stat-value">50+</div>
+                        <div class="stat-label">Games Available</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔮</div>
+                        <div class="stat-value">∞</div>
+                        <div class="stat-label">Enigma Search</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🧪</div>
+                        <div class="stat-value">24/7</div>
+                        <div class="stat-label">Always Online</div>
+                    </div>
+                </div>
+                <div class="feature-cards">
+                    <div class="feature-card" data-navigate="games">
+                        <h3>🎮 Classic Games</h3>
+                        <p>Play your favorite unblocked games instantly</p>
+                    </div>
+                    <div class="feature-card" data-navigate="enigma">
+                        <h3>🔮 Enigma Games</h3>
+                        <p>Unrestricted Google-style game search</p>
+                    </div>
+                    <div class="feature-card" data-navigate="science">
+                        <h3>🧪 Science Resources</h3>
+                        <p>Educational tools and experiments</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GAMES SECTION -->
+            <section id="games-section" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Game Library</h1>
+                    <p class="section-subtitle">Click any game to play</p>
+                </div>
+                <div id="game-container" class="game-view hidden">
+                    <button id="back-to-games" class="back-btn">← Back to Games</button>
+                    <div class="game-frame-wrapper">
+                        <iframe id="game-iframe" class="game-iframe" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div id="games-grid" class="games-grid">
+                    <!-- Games will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- ENIGMA GAMES SECTION -->
+            <section id="enigma-section" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title enigma-title">🔮 Enigma Games</h1>
+                    <p class="section-subtitle enigma-subtitle">Unrestricted Google Game Search</p>
+                </div>
+                <div class="enigma-container">
+                    <div class="enigma-search-box">
+                        <input type="text" id="enigma-search" class="enigma-input" placeholder="Search for any game...">
+                        <button id="enigma-search-btn" class="enigma-btn">Search</button>
+                    </div>
+                    <div class="enigma-disclaimer">
+                        <p>⚠️ Enigma Games uses Google search to find game content. Results are provided by Google and may vary.</p>
+                    </div>
+                    <div id="enigma-frame-container" class="enigma-frame-container hidden">
+                        <button id="enigma-back-btn" class="back-btn enigma-back">← New Search</button>
+                        <iframe id="enigma-iframe" class="enigma-iframe"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SCIENCE SECTION -->
+            <section id="science-section" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Science Resources</h1>
+                    <p class="section-subtitle">Educational tools and experiments</p>
+                </div>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">🧬</div>
+                        <h3>Biology</h3>
+                        <p>Interactive biology simulations</p>
+                        <a href="https://phet.colorado.edu/en/simulations/filter?subjects=biology&type=html" target="_blank" class="resource-link">Explore →</a>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">⚗️</div>
+                        <h3>Chemistry</h3>
+                        <p>Virtual chemistry lab experiments</p>
+                        <a href="https://phet.colorado.edu/en/simulations/filter?subjects=chemistry&type=html" target="_blank" class="resource-link">Explore →</a>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">🔬</div>
+                        <h3>Physics</h3>
+                        <p>Physics simulations and demonstrations</p>
+                        <a href="https://phet.colorado.edu/en/simulations/filter?subjects=physics&type=html" target="_blank" class="resource-link">Explore →</a>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">📐</div>
+                        <h3>Mathematics</h3>
+                        <p>Math tools and calculators</p>
+                        <a href="https://www.desmos.com/calculator" target="_blank" class="resource-link">Explore →</a>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">🌍</div>
+                        <h3>Earth Science</h3>
+                        <p>Geography and climate tools</p>
+                        <a href="https://earth.google.com/web/" target="_blank" class="resource-link">Explore →</a>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">🚀</div>
+                        <h3>Space</h3>
+                        <p>Astronomy and space exploration</p>
+                        <a href="https://eyes.nasa.gov/apps/solar-system/" target="_blank" class="resource-link">Explore →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TOOLS SECTION -->
+            <section id="tools-section" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Utility Tools</h1>
+                    <p class="section-subtitle">Helpful resources and utilities</p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <h3>📝 Notes</h3>
+                        <textarea id="notes-area" class="notes-textarea" placeholder="Type your notes here..."></textarea>
+                        <button id="save-notes" class="tool-btn">Save Notes</button>
+                    </div>
+                    <div class="tool-card">
+                        <h3>⏱️ Timer</h3>
+                        <div class="timer-display" id="timer-display">00:00</div>
+                        <div class="timer-controls">
+                            <button id="timer-start" class="tool-btn">Start</button>
+                            <button id="timer-stop" class="tool-btn">Stop</button>
+                            <button id="timer-reset" class="tool-btn">Reset</button>
+                        </div>
+                    </div>
+                    <div class="tool-card">
+                        <h3>🎲 Random Number</h3>
+                        <div class="random-display" id="random-display">?</div>
+                        <div class="random-inputs">
+                            <input type="number" id="random-min" value="1" placeholder="Min">
+                            <input type="number" id="random-max" value="100" placeholder="Max">
+                        </div>
+                        <button id="random-generate" class="tool-btn">Generate</button>
+                    </div>
+                    <div class="tool-card">
+                        <h3>🔗 Quick Links</h3>
+                        <div class="quick-links">
+                            <a href="https://www.google.com" target="_blank" class="quick-link">Google</a>
+                            <a href="https://www.youtube.com" target="_blank" class="quick-link">YouTube</a>
+                            <a href="https://www.wikipedia.org" target="_blank" class="quick-link">Wikipedia</a>
+                            <a href="https://www.khanacademy.org" target="_blank" class="quick-link">Khan Academy</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SETTINGS SECTION -->
+            <section id="settings-section" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Settings</h1>
+                    <p class="section-subtitle">Configure your portal</p>
+                </div>
+                
+                <div id="settings-locked" class="settings-locked">
+                    <div class="settings-lock-container">
+                        <div class="lock-icon">🔒</div>
+                        <h2>Settings Locked</h2>
+                        <p>Enter password to access settings</p>
+                        <div class="password-input-group">
+                            <input type="password" id="settings-password" class="password-input" placeholder="Enter password">
+                            <button id="settings-unlock" class="password-btn">Unlock</button>
+                        </div>
+                        <div id="settings-error" class="password-error"></div>
+                    </div>
+                </div>
+
+                <div id="settings-unlocked" class="settings-unlocked hidden">
+                    <div class="settings-card">
+                        <h3>🔑 Change Password</h3>
+                        <p class="settings-description">Update your portal password</p>
+                        <div class="settings-form">
+                            <input type="password" id="current-password" class="settings-input" placeholder="Current password">
+                            <input type="password" id="new-password" class="settings-input" placeholder="New password">
+                            <input type="password" id="confirm-password" class="settings-input" placeholder="Confirm new password">
+                            <button id="change-password-btn" class="settings-btn">Change Password</button>
+                        </div>
+                        <div id="change-password-msg" class="settings-message"></div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>🎨 Theme Options</h3>
+                        <p class="settings-description">Customize your experience (Coming Soon)</p>
+                        <div class="theme-options">
+                            <div class="theme-option active" data-theme="blue">
+                                <div class="theme-preview blue-theme"></div>
+                                <span>Cyber Blue</span>
+                            </div>
+                            <div class="theme-option" data-theme="purple">
+                                <div class="theme-preview purple-theme"></div>
+                                <span>Purple Enigma</span>
+                            </div>
+                            <div class="theme-option" data-theme="green">
+                                <div class="theme-preview green-theme"></div>
+                                <span>Matrix Green</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>ℹ️ Portal Information</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <strong>Version:</strong> 1.0.0
+                            </div>
+                            <div class="info-item">
+                                <strong>Status:</strong> <span class="status-online">● Online</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Session:</strong> Active
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="settings-lock-btn" class="settings-btn lock-btn">🔒 Lock Settings</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
